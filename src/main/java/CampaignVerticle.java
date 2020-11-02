@@ -34,7 +34,6 @@ public class CampaignVerticle extends AbstractVerticle{
 
             if (!userId.isEmpty()) {
                 rc.response().end("[\n" +
-                        userId +
                         "  { id: 11, name: 'Dr Nice' },\n" +
                         "  { id: 12, name: 'Narco' },\n" +
                         "  { id: 13, name: 'Bombasto' },\n" +
