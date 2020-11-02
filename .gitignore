@@ -1,0 +1,8 @@
+/.gradle/
+/.idea/
+/gradle/
+/build/
+/gradlew
+/gradlew.bat
+/src/main/frontend/node_modules/
+.DS_Store
