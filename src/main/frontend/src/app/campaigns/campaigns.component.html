@@ -1,0 +1,44 @@
+<p>campaigns works!</p>
+<pre *ngIf="result$"> {{(result$ | async) | json}} </pre>
+
+
+<table *ngIf="result$ | async; let campaigns; else loading">
+  <thead>
+  <tr>
+    <th>Campaign</th>
+    <th>Name</th>
+    <th>Max count per user</th>
+    <th>Max count</th>
+    <th>Impressions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let campaign of campaigns">
+    <td>
+      <a class="App-link" routerLink="/campaign/{{campaign.id}}">{{campaign.id}}</a>
+    </td>
+    <td>
+      {{campaign.name}}
+    </td>
+    <td>
+      {{campaign.cap.maxCountPerUser}}
+    </td>
+    <td>
+      {{campaign.cap.maxCount}}
+    </td>
+    <td>
+      {{campaign.impressions}}
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+
+<ng-template #loading>
+  <p *ngIf="!error; else err">Fetching campaigns...</p>
+  <ng-template #err>
+    <p>Failed to load campaigns: {{ error.statusText }}</p>
+  </ng-template>
+</ng-template>
+<br><br><br>
+<span><a class="App-link" routerLink="/">Home</a></span>

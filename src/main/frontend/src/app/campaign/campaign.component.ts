@@ -6,8 +6,9 @@ import { Campaign } from "../campaign";
   templateUrl: './campaign.component.html',
   styleUrls: ['./campaign.component.scss']
 })
+
 export class CampaignComponent implements OnInit {
-  campaigns: Campaign = {
+  campaign: Campaign = {
     id: 0,
     name: "my_campaign_1",
     data: "",

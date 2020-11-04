@@ -1,50 +1,55 @@
 package model;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Campaign {
-    private Integer id;
+    private static final AtomicInteger COUNTER = new AtomicInteger();
+
+    private int id;
     private String name;
     private String data;    // some data
     private Cap cap;
+    private int impressions = 0;
 
-    public Campaign(Integer id, String name, String data, Cap cap) {
-        this.id = id;
+    public Campaign(String name, String data, Cap cap) {
+        this.id = COUNTER.getAndIncrement();
         this.name = name;
         this.data = data;
         this.cap = cap;
     }
 
-    private class Cap {
-        private Integer maxCountPerUser;
-        private Integer maxCount;
+    public static class Cap {
+        private int maxCountPerUser;
+        private int maxCount;
 
-        public Cap(Integer maxCountPerUser, Integer maxCount) {
+        public Cap(int maxCountPerUser, int maxCount) {
             this.maxCountPerUser = maxCountPerUser;
             this.maxCount = maxCount;
         }
 
-        public Integer getMaxCountPerUser() {
+        public int getMaxCountPerUser() {
             return maxCountPerUser;
         }
 
-        public void setMaxCountPerUser(Integer maxCountPerUser) {
+        public void setMaxCountPerUser(int maxCountPerUser) {
             this.maxCountPerUser = maxCountPerUser;
         }
 
-        public Integer getMaxCount() {
+        public int getMaxCount() {
             return maxCount;
         }
 
-        public void setMaxCount(Integer maxCount) {
+        public void setMaxCount(int maxCount) {
             this.maxCount = maxCount;
         }
 
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -72,5 +77,16 @@ public class Campaign {
         this.cap = cap;
     }
 
+    public void decrementCap() {
+        this.cap.setMaxCountPerUser(this.cap.getMaxCountPerUser() - 1);
+        this.cap.setMaxCount(this.cap.getMaxCount() - 1);
+    }
 
+    public int getImpressions() {
+        return impressions;
+    }
+
+    public void incrementImpressions() {
+        impressions++;
+    }
 }

@@ -1,7 +1,32 @@
 <p>campaign works!</p>
 
 
-<h2>{{campaigns.name}} Details</h2>
-<div><span>id: </span>{{campaigns.id}}</div>
-<div><span>name: </span>{{campaigns.name}}</div>
-<div><span>max views possible: </span>{{campaigns.cap.maxCount}}</div>
+<h2>{{campaign.name}} Details</h2>
+<div><span>id: </span>{{campaign.id}}</div>
+<div><span>name: </span>{{campaign.name}}</div>
+<div><span>max views possible: </span>{{campaign.cap.maxCount}}</div>
+
+<form>
+
+Campaign Name: <input type="text" ng-model="campaign.name">
+</form>
+
+
+<div ng-app="Campaign" ng-controller="CampaignService">
+
+  Name: <input ng-model="campaign.name">
+  <h4>You entered: {{campaign.name}}</h4>
+
+</div>
+
+
+
+<ng-template #loading>
+  <p *ngIf="!error; else err">Fetching campaign...</p>
+  <ng-template #err>
+    <p>Failed to load campaign: {{ error.statusText }}</p>
+  </ng-template>
+</ng-template>
+
+<br><br><br>
+<span><a class="App-link" routerLink="/">Home</a></span>
