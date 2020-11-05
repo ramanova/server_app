@@ -11,12 +11,12 @@ import {Campaign} from "../campaign";
 })
 export class CampaignsComponent implements OnInit {
   @Input()
-  result$: Observable<Campaign[]>;
+  allCampaigns$: Observable<Campaign[]>;
 
   constructor(private campaignsService: CampaignsService) {
-    this.result$ = campaignsService.getCampaigns();
-    console.log(this.result$);
+    this.allCampaigns$ = campaignsService.getCampaigns();
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 }

@@ -54,6 +54,9 @@ public class CampaignVerticle extends AbstractVerticle{
         routingContext.response()
                 .setStatusCode(201)
                 .putHeader("content-type", "application/json; charset=utf-8")
+//                .putHeader("Access-Control-Allow-Origin", "*")
+//                .putHeader("Access-Control-Allow-Methods", "GET,POST")
+//                .putHeader("Referrer-Policy", "no-referrer-when-downgrade")
                 .end(Json.encodePrettily(campaign));
     }
 

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Campaign } from "../campaign";
+import {Component, OnInit} from '@angular/core';
+import {Campaign} from "../campaign";
+import {FormControl, FormGroup} from "@angular/forms";
+import {CampaignsService} from "../campaigns.service";
 
 @Component({
   selector: 'app-campaign',
@@ -17,10 +19,23 @@ export class CampaignComponent implements OnInit {
       maxCount: 10,
     }
   };
+  campaignForm: FormGroup;
 
-  constructor() { }
+  constructor(private campaignsService: CampaignsService) {
+  }
 
   ngOnInit(): void {
+    this.campaignForm = new FormGroup({
+      campaignName: new FormControl(),
+      maxCountPerUser: new FormControl(),
+      maxCount: new FormControl()
+    });
+  }
+
+  onSubmit(campaignData: Campaign) {
+    this.campaignsService.save(campaignData);
+
+    console.warn('Campaign created: ', campaignData);
   }
 
 }

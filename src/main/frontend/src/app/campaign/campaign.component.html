@@ -1,32 +1,66 @@
-<p>campaign works!</p>
+<div class="basic-container">
+  <mat-card class="form-card">
+    <div class="mat-card-header">
+      <div class="mat-card-title">Add Campaign</div>
+    </div>
+
+    <form [formGroup]="campaignForm" (ngSubmit)="onSubmit(campaignForm.value)">
+
+      <mat-form-field>
+        <input id="campaignName" formControlName="campaignName" matInput placeholder="Campaign Name">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input id="maxCountPerUser" formControlName="maxCountPerUser" type="number" matInput placeholder="Max Count Per User">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input id="maxCount" formControlName="maxCount" type="number" matInput placeholder="Max Count">
+      </mat-form-field>
+
+      <button mat-raised-button class="button" type="submit">Add</button>
+    </form>
 
 
-<h2>{{campaign.name}} Details</h2>
-<div><span>id: </span>{{campaign.id}}</div>
-<div><span>name: </span>{{campaign.name}}</div>
-<div><span>max views possible: </span>{{campaign.cap.maxCount}}</div>
-
-<form>
-
-Campaign Name: <input type="text" ng-model="campaign.name">
-</form>
 
 
-<div ng-app="Campaign" ng-controller="CampaignService">
 
-  Name: <input ng-model="campaign.name">
-  <h4>You entered: {{campaign.name}}</h4>
 
+
+
+    <!--    <form class="container" (ngSubmit)="submit()" [formGroup]="campaignForm" autocomplete="off">-->
+    <!--      <mat-card-content>-->
+
+    <!--        <mat-form-field appearance="outline" class="form-full-width">-->
+    <!--          <mat-label>Email</mat-label>-->
+    <!--          <input formControlName="campaignName" matInput placeholder="Campaign ">-->
+    <!--&lt;!&ndash;          <mat-error *ngIf="emailAddress.hasError('email') && !emailAddress.hasError('required')">&ndash;&gt;-->
+    <!--&lt;!&ndash;            Please enter a valid email address&ndash;&gt;-->
+    <!--&lt;!&ndash;          </mat-error>&ndash;&gt;-->
+    <!--&lt;!&ndash;          <mat-error *ngIf="emailAddress.hasError('required')">&ndash;&gt;-->
+    <!--&lt;!&ndash;            Email address is <strong>required</strong>&ndash;&gt;-->
+    <!--&lt;!&ndash;          </mat-error>&ndash;&gt;-->
+    <!--        </mat-form-field>-->
+
+    <!--&lt;!&ndash;        <mat-form-field appearance="outline" class="form-full-width">&ndash;&gt;-->
+    <!--&lt;!&ndash;          <mat-label>Password</mat-label>&ndash;&gt;-->
+    <!--&lt;!&ndash;          <input [errorStateMatcher]="matcher" formControlName="password"&ndash;&gt;-->
+    <!--&lt;!&ndash;                 matInput type="password">&ndash;&gt;-->
+    <!--&lt;!&ndash;          <mat-hint>Enter a strong password</mat-hint>&ndash;&gt;-->
+    <!--&lt;!&ndash;          <mat-error *ngIf="password.hasError('required')">&ndash;&gt;-->
+    <!--&lt;!&ndash;            Password is <strong>required</strong>&ndash;&gt;-->
+    <!--&lt;!&ndash;          </mat-error>&ndash;&gt;-->
+    <!--&lt;!&ndash;        </mat-form-field>&ndash;&gt;-->
+    <!--      </mat-card-content>-->
+
+    <!--      <mat-card-actions style="margin: 0">-->
+    <!--&lt;!&ndash;        <button [disabled]="!buyerForm.valid" color="primary" mat-raised-button type="submit">&ndash;&gt;-->
+    <!--        <button [disabled]="!buyerForm.valid" color="primary" mat-raised-button type="submit">-->
+    <!--          Save-->
+    <!--        </button>-->
+    <!--      </mat-card-actions>-->
+    <!--    </form>-->
+
+
+  </mat-card>
 </div>
-
-
-
-<ng-template #loading>
-  <p *ngIf="!error; else err">Fetching campaign...</p>
-  <ng-template #err>
-    <p>Failed to load campaign: {{ error.statusText }}</p>
-  </ng-template>
-</ng-template>
-
-<br><br><br>
-<span><a class="App-link" routerLink="/">Home</a></span>
