@@ -34,8 +34,6 @@ export class CampaignComponent implements OnInit {
 
   onSubmit(campaignData: Campaign) {
     this.campaignsService.save(campaignData);
-
-    console.warn('Campaign created: ', campaignData);
   }
 
 }

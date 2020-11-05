@@ -8,8 +8,8 @@ import {Campaign} from "./campaign";
 })
 export class CampaignsService {
 
-  private readonly URL = 'http://localhost:8080/api/campaigns/all';
-  private readonly URL_SUBMIT = 'http://localhost:8080/api/campaigns';
+  private readonly URL = '/api/campaigns/all';
+  private readonly URL_SUBMIT = '/api/campaigns';
   constructor(private http: HttpClient) { }
 
   private setHeaders(): HttpHeaders {
@@ -27,8 +27,17 @@ export class CampaignsService {
     return this.http.get<Campaign[]>(this.URL);
   }
 
-  save(campaignData: Campaign) {
-    let req = this.http.post<Campaign>(this.URL_SUBMIT, campaignData, {headers: this.setHeaders()});
+  save(campaignData) {
+    let campaignToSubmit = {
+      name: campaignData.campaignName,
+      cap: {
+        maxCountPerUser: campaignData.maxCountPerUser,
+        maxCount: campaignData.maxCount
+      }
+    }
+
+    console.log(campaignToSubmit);
+    let req = this.http.post<Campaign>(this.URL_SUBMIT, campaignToSubmit, {headers: this.setHeaders()});
     req.subscribe();
   }
 

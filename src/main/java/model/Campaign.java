@@ -3,13 +3,17 @@ package model;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Campaign {
-    private static final AtomicInteger COUNTER = new AtomicInteger();
+    private static final AtomicInteger COUNTER = new AtomicInteger(123);
 
     private int id;
     private String name;
     private String data;    // some data
     private Cap cap;
     private int impressions = 0;
+
+    public Campaign() {
+        this.id = COUNTER.getAndIncrement();
+    }
 
     public Campaign(String name, String data, Cap cap) {
         this.id = COUNTER.getAndIncrement();
@@ -21,6 +25,8 @@ public class Campaign {
     public static class Cap {
         private int maxCountPerUser;
         private int maxCount;
+
+        public Cap() {}
 
         public Cap(int maxCountPerUser, int maxCount) {
             this.maxCountPerUser = maxCountPerUser;

@@ -2,7 +2,6 @@ import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Vertx;
 import io.vertx.core.json.Json;
 import io.vertx.core.json.JsonObject;
-import io.vertx.ext.web.Route;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.handler.BodyHandler;
@@ -32,6 +31,7 @@ public class CampaignVerticle extends AbstractVerticle{
         // CRUD APIs for campaigns
         router.get("/api/campaigns/all").handler(this::getAll);
 
+        router.route("/api/campaigns*").handler(BodyHandler.create());
         router.post("/api/campaigns").handler(this::addOne);
         router.get("/api/campaigns/:id").handler(this::getOne);
         router.put("/api/campaigns/:id").handler(this::updateOne);
@@ -50,13 +50,11 @@ public class CampaignVerticle extends AbstractVerticle{
                 Campaign.class);
 
         campaigns.put(campaign.getId(), campaign);
-
         routingContext.response()
                 .setStatusCode(201)
                 .putHeader("content-type", "application/json; charset=utf-8")
-//                .putHeader("Access-Control-Allow-Origin", "*")
-//                .putHeader("Access-Control-Allow-Methods", "GET,POST")
-//                .putHeader("Referrer-Policy", "no-referrer-when-downgrade")
+                .putHeader("Access-Control-Allow-Origin", "*")
+                .putHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS")
                 .end(Json.encodePrettily(campaign));
     }
 
@@ -118,7 +116,7 @@ public class CampaignVerticle extends AbstractVerticle{
         routingContext.response()
                 .putHeader("content-type", "application/json; charset=utf-8")
                 .putHeader("Access-Control-Allow-Origin", "*")
-                .putHeader("Access-Control-Allow-Methods", "GET")
+                .putHeader("Access-Control-Allow-Methods", "GET,POST")
                 .end(Json.encodePrettily(campaigns.values()));
     }
 
