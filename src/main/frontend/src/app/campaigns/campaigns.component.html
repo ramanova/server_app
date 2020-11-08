@@ -1,5 +1,3 @@
-<!--<pre *ngIf="allCampaigns$"> {{(allCampaigns$ | async) | json}} </pre>-->
-
 <mat-card class="form-card">
   <table *ngIf="allCampaigns$ | async; let campaigns; else loading">
     <thead>
@@ -14,7 +12,7 @@
     <tbody>
     <tr *ngFor="let campaign of campaigns">
       <td>
-        <a class="App-link" routerLink="/campaign/{{campaign.id}}">Edit {{campaign.id}}</a>
+        <a class="App-link" routerLink="/campaign/{{campaign.id}}">{{campaign.id}}</a>
       </td>
       <td>
         {{campaign.name}}

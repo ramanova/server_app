@@ -5,7 +5,6 @@
     </div>
 
     <form [formGroup]="campaignForm" (ngSubmit)="onSubmit(campaignForm.value)">
-
       <mat-form-field>
         <input id="campaignName" formControlName="campaignName" matInput placeholder="Campaign Name">
       </mat-form-field>
@@ -20,47 +19,5 @@
 
       <button mat-raised-button class="button" type="submit">Add</button>
     </form>
-
-
-
-
-
-
-
-
-    <!--    <form class="container" (ngSubmit)="submit()" [formGroup]="campaignForm" autocomplete="off">-->
-    <!--      <mat-card-content>-->
-
-    <!--        <mat-form-field appearance="outline" class="form-full-width">-->
-    <!--          <mat-label>Email</mat-label>-->
-    <!--          <input formControlName="campaignName" matInput placeholder="Campaign ">-->
-    <!--&lt;!&ndash;          <mat-error *ngIf="emailAddress.hasError('email') && !emailAddress.hasError('required')">&ndash;&gt;-->
-    <!--&lt;!&ndash;            Please enter a valid email address&ndash;&gt;-->
-    <!--&lt;!&ndash;          </mat-error>&ndash;&gt;-->
-    <!--&lt;!&ndash;          <mat-error *ngIf="emailAddress.hasError('required')">&ndash;&gt;-->
-    <!--&lt;!&ndash;            Email address is <strong>required</strong>&ndash;&gt;-->
-    <!--&lt;!&ndash;          </mat-error>&ndash;&gt;-->
-    <!--        </mat-form-field>-->
-
-    <!--&lt;!&ndash;        <mat-form-field appearance="outline" class="form-full-width">&ndash;&gt;-->
-    <!--&lt;!&ndash;          <mat-label>Password</mat-label>&ndash;&gt;-->
-    <!--&lt;!&ndash;          <input [errorStateMatcher]="matcher" formControlName="password"&ndash;&gt;-->
-    <!--&lt;!&ndash;                 matInput type="password">&ndash;&gt;-->
-    <!--&lt;!&ndash;          <mat-hint>Enter a strong password</mat-hint>&ndash;&gt;-->
-    <!--&lt;!&ndash;          <mat-error *ngIf="password.hasError('required')">&ndash;&gt;-->
-    <!--&lt;!&ndash;            Password is <strong>required</strong>&ndash;&gt;-->
-    <!--&lt;!&ndash;          </mat-error>&ndash;&gt;-->
-    <!--&lt;!&ndash;        </mat-form-field>&ndash;&gt;-->
-    <!--      </mat-card-content>-->
-
-    <!--      <mat-card-actions style="margin: 0">-->
-    <!--&lt;!&ndash;        <button [disabled]="!buyerForm.valid" color="primary" mat-raised-button type="submit">&ndash;&gt;-->
-    <!--        <button [disabled]="!buyerForm.valid" color="primary" mat-raised-button type="submit">-->
-    <!--          Save-->
-    <!--        </button>-->
-    <!--      </mat-card-actions>-->
-    <!--    </form>-->
-
-
   </mat-card>
 </div>

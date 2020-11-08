@@ -7,7 +7,7 @@ public class Campaign {
 
     private int id;
     private String name;
-    private String data;    // some data
+    private String data;
     private Cap cap;
     private int impressions = 0;
 
